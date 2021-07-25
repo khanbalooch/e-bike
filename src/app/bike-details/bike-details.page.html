@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fahrraddetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-img src="./../../assets/images/bike2.jpg"></ion-img>
+  </ion-item>
+    
+  <ion-item>
+      <ion-title>{{details?.bike.name  | uppercase}}</ion-title>
+      <ion-chip slot="end">
+        <ion-label>verfügbar</ion-label>
+      </ion-chip>
+  </ion-item>
+
+  <ion-item>
+    <ion-text *ngIf="!readMore" > {{ (details?.bike.description | slice:0:45) }}</ion-text>
+    <ion-text *ngIf="readMore"> {{details?.bike.description}}</ion-text>
+    <ion-chip slot="end" (click)="readMore = !readMore" *ngIf="!readMore"><ion-label>Read more</ion-label></ion-chip>
+    <ion-chip slot="end" (click)="readMore = !readMore" *ngIf="readMore"><ion-label>Read less</ion-label></ion-chip>
+  </ion-item>
+  <ion-item>
+    <ion-label>Hersteller</ion-label>
+    <ion-text slot="end">{{details?.bike.make}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Modell</ion-label>
+    <ion-text slot="end">{{details?.bike.model}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Mietpreis</ion-label>
+    <ion-text slot="end">{{details?.bike.price}}€</ion-text>
+  </ion-item>
+  <ion-button (click)="gotoBookingPage()" color="secondary" expand="block">Nächster</ion-button>
+</ion-content>

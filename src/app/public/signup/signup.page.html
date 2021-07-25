@@ -1,0 +1,66 @@
+<ion-content>
+  <ng-container *ngIf="!step">
+    <ion-item>
+      <h1>Möchten Sie per “du” oder “Sie” angesprochen werden?</h1>
+    </ion-item>
+    
+    <ion-button color="primary" (click)="secondStep(0)">Du </ion-button>
+    <ion-button color="success" (click)="secondStep(1)">Sie</ion-button>
+
+  </ng-container>
+  
+  <ng-container *ngIf="step">
+    <form (ngSubmit)="onSubmit()" [formGroup]="signupForm">
+      <ion-item>
+        <h1>Registriere dich jetzt zum e-Bike Verleih</h1>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">{{nick + ' Vorname'}}</ion-label>
+        <ion-input type="text" formControlName="fname"></ion-input>
+      </ion-item>
+      
+      <div *ngIf="(fname.dirty || fname.touched) && fname.errors" class="errors">
+        <span *ngIf="fname.errors?.required">{{nick + ' Vorname'}} ist erforderlich</span>
+      </div>
+
+      <ion-item>
+        <ion-label position="stacked">{{nick + ' Nachname'}}</ion-label>
+        <ion-input type="text" formControlName="lname"></ion-input>
+      </ion-item>
+
+      <div *ngIf="(lname.dirty || lname.touched) && lname.errors" class="errors">
+        <span *ngIf="lname.errors?.required">{{nick + ' Nachname'}} ist erforderlich</span>
+      </div>
+      
+      <ion-item>
+        <ion-label position="stacked">E-Mailadresse</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+        <span *ngIf="email.errors?.required">E-Mail ist erforderlich</span>
+        <span *ngIf="email.errors?.email">E-Mail ist ungültig</span>
+      </div>
+      
+      <ion-item>
+        <ion-label position="stacked">Passwort</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+        <span *ngIf="password.errors?.required">Passwort wird benötigt</span>
+        <span *ngIf="password.errors?.minlength">Das Passwort muss 6 Zeichen lang sein</span>
+      </div>
+      
+      <ion-item>
+        <ion-checkbox formControlName="consent" color="tertiary" slot="start"></ion-checkbox>
+        <p>Ich habe die AGBs und Datenschutzbestimmungen gelesen und akzeptiere diese</p>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="!signupForm.valid" >Registrieren</ion-button>
+      
+    </form>
+    
+  </ng-container>
+</ion-content>

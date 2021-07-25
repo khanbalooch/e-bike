@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Buchung</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>{{details?.bike.name | uppercase}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Anfangsdatum</ion-label>
+    <ion-datetime done-text="fertig" cancel-text="stornieren"  [min]="startDate" displayFormat="DD.MM.YYYY" [(ngModel)]="startDate" placeholder="Datum auswählen"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Endtermin</ion-label>
+    <ion-datetime done-text="fertig" cancel-text="stornieren" [min]="startDate" displayFormat="DD.MM.YYYY" [(ngModel)]="endDate" placeholder="Datum auswählen"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Mietpreis</ion-label>
+    <ion-text slot="end">{{details?.bike.price}}€</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked" >Anzahl</ion-label>
+    <ion-input slot="end"  type="number" [(ngModel)]="numberOfBikes" min='1'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked" >Beleuchtungsset {{lightingSetPrice}}</ion-label>
+    <ion-input slot="end"  type="number" [(ngModel)]="numberOfLightingSet" min='0'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked" >Fahrradhlem {{helmetPrice}}€</ion-label>
+    <ion-input slot="end" type="number" [(ngModel)]="numberOfHelmets" min='0'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Pannenkit(Kostenlos)</ion-label>
+    <ion-input slot="end"  type="number" [(ngModel)]="numberOfPannenKits" min='0'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Rucksack Salomon Trailblazer</ion-label>
+    <ion-input slot="end"  type="number" [(ngModel)]="numberOfBackPackSalomonTrailblazer" min='0'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Gesamtpreis</ion-label>
+    <ion-text slot="end">{{totalPrice}}€</ion-text>
+  </ion-item>
+  <ion-button (click)="calculate()"  expand="block" color="secondary">
+    <ion-icon name="cart">{{' '  + ' '}}</ion-icon>
+    Fortfahren</ion-button>
+</ion-content>

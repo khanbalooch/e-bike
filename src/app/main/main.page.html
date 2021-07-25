@@ -1,0 +1,22 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="formattedAddress" debounce="300" placeholder="Standort-Suche.." animated showCancelButton="focus"></ion-searchbar>
+    <ion-button color="secondary" slot="end" (click)="mapView = !mapView">
+      <ion-icon   *ngIf="mapView" name="list-outline"></ion-icon>
+      <ion-icon   *ngIf="!mapView" name="earth-outline"></ion-icon>
+    </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ng-container *ngIf="!mapView">
+    <ion-list>
+      <ng-container *ngFor="let location of locations">
+        <app-accordion (onSelect)="gotoDetailsPage($event)" [title]="location.name" [description]="location.address" [count]="location.devicesCount" [listItems]="location.devices"></app-accordion>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+  <ng-container *ngIf="mapView">
+    <app-map></app-map>
+  </ng-container>
+</ion-content>
