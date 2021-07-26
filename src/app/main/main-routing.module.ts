@@ -5,21 +5,21 @@ import { MainPage } from './main.page';
 
 const routes: Routes = [
   {
-    path: 'main',
-    component: MainPage,
-    children: [
-      {
-        path: '',
-        redirectTo: '/main',
-        pathMatch: 'full'
-      }
-    ]
-  },
-  {
     path: '',
-    redirectTo: '/main',
-    pathMatch: 'full'
-  }
+    component: MainPage,
+    // children: [
+    //   {
+    //     path: 'main',
+    //     redirectTo: '/main',
+    //     pathMatch: 'full'
+    //   }
+    // ]
+  },
+  // {
+  //   path: '',
+  //   redirectTo: '/main',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({

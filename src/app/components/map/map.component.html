@@ -1,7 +1,15 @@
 <google-map
     height="100%"
     width="100%"
-    zoom="17"
-  
+    [zoom]="zoom"
+    [center]="center"
+    [options]="options"
+    (mapClick)="mapPin($event)"
   >
-  </google-map>
+    <map-marker *ngFor="let location of locations"
+      #marker="mapMarker"
+      [position]="location.position"
+      (mapClick)="openInfoWindow(marker, location)"
+    ></map-marker>
+    <map-info-window (domready)="domReady()" [innerHtml]="infoContent"></map-info-window>
+</google-map>

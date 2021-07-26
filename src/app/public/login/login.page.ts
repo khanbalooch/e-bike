@@ -13,8 +13,6 @@ export class LoginPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    // private authService: AuthenticationService,
-    private alertController: AlertController,
     private router: Router,
     private loadingController: LoadingController
   ) {}
