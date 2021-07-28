@@ -10,8 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class SignupPage implements OnInit {
 
-  step=  0;
-  nick= '';
+  nick= 'Dein';
   signupForm: FormGroup;
   constructor(private router: Router, private alertController: AlertController){ }
 
@@ -25,10 +24,10 @@ export class SignupPage implements OnInit {
     });
   }
 
-  secondStep(input){
-    this.step = 1;
-    this.nick = input === 0 ? 'Dein' : 'lhr';
-  }
+  // secondStep(input){
+  //   this.step = 1;
+  //   this.nick = input === 0 ? 'Dein' : 'lhr';
+  // }
 
   onSubmit(){
 

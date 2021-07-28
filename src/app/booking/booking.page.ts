@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-booking',
@@ -7,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./booking.page.scss'],
 })
 export class BookingPage implements OnInit {
-
+  showAlrt = true;
   details: any = null;
   startDate: string = new Date().toISOString();
   endDate: string = new Date().toISOString();
@@ -21,10 +22,10 @@ export class BookingPage implements OnInit {
   backPackSalomonTrailblazerPrice = 3;
   numberOfBackPackSalomonTrailblazer = 0;
   totalPrice = 0;
-  constructor(private router: ActivatedRoute) { }
+  constructor(private actRoute: ActivatedRoute, private router: Router, private alertController: AlertController) { }
 
   ngOnInit() {
-    this.router.queryParams.subscribe(params => {
+    this.actRoute.queryParams.subscribe(params => {
       this.details = JSON.parse(params.bikeDetails);
       console.log(this.details);
     });
@@ -93,4 +94,30 @@ export class BookingPage implements OnInit {
     this.numberOfBackPackSalomonTrailblazer > 0 ? this.numberOfBackPackSalomonTrailblazer -1 : this.numberOfBackPackSalomonTrailblazer;
     this.calculate();
   }
+
+  isTimePeriodValid(){
+    const date1 = new Date(this.startDate);
+    const date2 = new Date(this.endDate);
+    return date1 <= date2;
+  }
+  gotoPayment(){
+    //check if days are good
+    if(this.showAlrt){
+      this.presentAlert();
+      this.showAlrt = !this.showAlrt;
+    }else{
+      this.router.navigateByUrl('/payment');
+    }
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Ungültiger Zeitraum',
+      message: 'Der ausgewählte Zeitraum ist nicht verfügbar. Bitte wählen Sie ein anderes Datum.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
 }

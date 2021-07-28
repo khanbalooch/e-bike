@@ -1,7 +1,18 @@
 <ion-content>
-  <ng-template ngFor let-location [ngForOf]="locations">
-    <ion-list>
-      <ion-list-header color="secondary">{{location.name +' ' + location.address}}<ion-icon name="location-sharp"></ion-icon></ion-list-header>
+  <!-- <ng-template > -->
+    <ion-list *ngFor="let location of locations">
+      <ion-list-header color="secondary">
+        <ion-grid>
+          <ion-row >
+            <ion-text class="name">{{location.name}}</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-icon name="location-sharp"></ion-icon>
+            <ion-text>{{location.address}}</ion-text>
+          </ion-row>
+        </ion-grid>
+         
+      </ion-list-header>
       <ion-item (click)="gotoDetailsPage(device)" *ngFor="let device of location.devices">
   
   
@@ -16,5 +27,5 @@
   
       </ion-item>
     </ion-list>  
-  </ng-template>
+  <!-- </ng-template> -->
 </ion-content>

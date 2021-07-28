@@ -28,8 +28,8 @@
         <span *ngIf="password.errors?.minlength">Das Passwort muss 6 Zeichen lang sein</span>
       </div>
  
-    <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Anmelden</ion-button>
-    <ion-button type="button" expand="block" href="\signup" router-direction="back" fill="clear">Noch kein Mitglied? Registrieren !</ion-button>
+    <ion-button color="secondary" type="submit" expand="block" [disabled]="!credentials.valid">Anmelden</ion-button>
+    <ion-button color="secondary" type="button" expand="block" href="\signup" router-direction="back" fill="clear">Noch kein Mitglied? Registrieren !</ion-button>
  
   </form>
 </ion-content>

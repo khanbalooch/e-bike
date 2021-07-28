@@ -13,6 +13,7 @@
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Anfangsdatum</ion-label>
+    <!-- <ion-text>Der ausgewählte Zeitraum ist nicht verfügbar. Bitte wählen Sie ein anderes Datum</ion-text> -->
     <ion-datetime done-text="fertig" cancel-text="Abbrechen"  [min]="startDate" displayFormat="DD.MM.YYYY" [(ngModel)]="startDate" placeholder="Datum auswählen"></ion-datetime>
   </ion-item>
   <ion-item>
@@ -72,7 +73,7 @@
     <ion-label>Gesamtpreis</ion-label>
     <ion-text slot="end">{{totalPrice}}€</ion-text>
   </ion-item>
-  <ion-button (click)="calculate()"  expand="block" color="secondary">
+  <ion-button (click)="gotoPayment()"  expand="block" color="secondary">
     <ion-icon name="cart">{{' '  + ' '}}</ion-icon>
     Fortfahren</ion-button>
 </ion-content>

@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Adressdaten</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ng-container *ngIf="step === 0">
+    <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+      <ion-item>
+        <ion-list>
+          <ion-radio-group formControlName="nick" value="biff">
+            <ion-list-header>
+              <p class="question" >Möchten Sie per “du” oder “Sie” angesprochen werden?</p>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label slot="start">Du</ion-label>
+              <!-- <ion-text> -->
+              <ion-radio slot="start" value="Dein"></ion-radio>
+              <ion-radio slot="end" value="lhr"></ion-radio>
+              <ion-label slot="start">Sie</ion-label>
+              <!-- </ion-text> -->
+              
+            </ion-item>
+            <!-- <ion-item>
+              <ion-label slot="start">Sie</ion-label>
+              <ion-radio slot="end" value="lhr"></ion-radio>
+            </ion-item> -->
+          </ion-radio-group>
+        </ion-list>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Dein Name</ion-label>
+        <ion-input type="text" placeholder="Dein Name" formControlName="name"></ion-input>
+      </ion-item>
+  
+      <div *ngIf="(name.dirty || name.touched) && name.errors" class="errors">
+        <span *ngIf="name.errors?.required">Dein Name ist erforderlich</span>
+      </div>
+  
+      <ion-item>
+        <ion-label position="stacked">E-Mail</ion-label>
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+  
+      <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+        <span *ngIf="email.errors?.required">E-Mail ist erforderlich</span>
+        <span *ngIf="email.errors?.email">E-Mail ist ungültig</span>
+      </div>
+  
+      <ion-item>
+        <ion-label position="stacked">Straße + Nr.</ion-label>
+        <ion-input type="text" placeholder="Straße + Nr." formControlName="address"></ion-input>
+      </ion-item>
+  
+      <div *ngIf="(address.dirty || address.touched) && address.errors" class="errors">
+        <span *ngIf="address.errors?.required">Straße + Nr. ist erforderlich</span>
+      </div>
+  
+      <ion-item>
+        <ion-label position="stacked">Stadt</ion-label>
+        <ion-input type="text" placeholder="Stadt" formControlName="city"></ion-input>
+      </ion-item>
+  
+      <div *ngIf="(city.dirty || city.touched) && city.errors" class="errors">
+        <span *ngIf="city.errors?.required">City ist erforderlich</span>
+      </div>
+  
+      <ion-item>
+        <ion-label position="stacked">Bundesland</ion-label>
+        <ion-input type="text" placeholder="Bundesland" formControlName="state"></ion-input>
+      </ion-item>
+
+      <div *ngIf="(state.dirty || state.touched) && state.errors" class="errors">
+        <span *ngIf="state.errors?.required">State ist erforderlich</span>
+      </div>
+
+      <ion-item>
+        <ion-label position="stacked">PLZ</ion-label>
+        <ion-input type="number" placeholder="PLZ" formControlName="zipcode"></ion-input>
+      </ion-item>
+
+      
+      <div *ngIf="(zipcode.dirty || zipcode.touched) && zipcode.errors" class="errors">
+        <span *ngIf="zipcode.errors?.required">State ist erforderlich</span>
+      </div>
+  
+      <ion-button color="secondary" type="submit" expand="block" [disabled]="!contactForm.valid">weiter</ion-button>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="step === 1">
+    <ion-item>
+      <ion-label>Zahlart auswählen</ion-label>
+    </ion-item>
+
+    <!-- <ion-item> -->
+      <ion-button (click)="paypalMethod()" expand="block">PayPal</ion-button>
+    <!-- </ion-item>
+    <ion-button>
+
+    </ion-button> -->
+    <ion-button (click)="creditCardMethod()" color="secondary" expand="block">Kreditkarte</ion-button>
+
+  </ng-container>
+
+  <ng-container *ngIf="step === 2">
+    <form (ngSubmit)="processPayment()" [formGroup]="paymentForm">
+      <ion-item>
+        <ion-label position="stacked">Kreditkartennummer</ion-label>
+        <ion-input type="number" placeholder="Kreditkartennummer" formControlName="credcard"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Ablaufdatum</ion-label>
+        <ion-datetime done-text="fertig" cancel-text="Abbrechen" formControlName="exp" [min]="startDate" displayFormat="MM.YYYY" placeholder="Datum auswählen"></ion-datetime>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">CVV</ion-label>
+        <ion-input type="number" placeholder="CVV" formControlName="cvv"></ion-input>
+      </ion-item>
+
+      
+    <ion-button color="secondary" type="submit" expand="block" [disabled]="!paymentForm.valid">Bezahlen</ion-button>
+  </form>
+
+  </ng-container>
+  
+  
+
+    
+
+
+</ion-content>
