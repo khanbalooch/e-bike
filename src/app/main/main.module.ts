@@ -5,11 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { MainPageRoutingModule } from './main-routing.module';
-import { GoogleMapsModule } from "@angular/google-maps";
 import { MainPage } from './main.page';
 
-import { AccordionComponent } from './../widgets/accordion/accordion.component';
-import { MapComponent } from './../components/map/map.component';
 
 @NgModule({
   imports: [
@@ -17,8 +14,7 @@ import { MapComponent } from './../components/map/map.component';
     FormsModule,
     IonicModule,
     MainPageRoutingModule,
-    GoogleMapsModule
   ],
-  declarations: [MainPage, AccordionComponent, MapComponent]
+  declarations: [MainPage]
 })
 export class MainPageModule {}

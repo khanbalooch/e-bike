@@ -38,7 +38,7 @@ export class SignupPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Email Alert',
+      header: 'E-Mail Bestätigung',
       message: 'Vielen Dank für Ihre Registrierung! Sie erhalten eine E-Mail zur Bestätigung.',
       buttons: ['OK']
     });

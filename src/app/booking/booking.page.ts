@@ -12,13 +12,13 @@ export class BookingPage implements OnInit {
   startDate: string = new Date().toISOString();
   endDate: string = new Date().toISOString();
   numberOfBikes = 1;
-  lightingSetPrice = 400;
+  lightingSetPrice = 4;
   numberOfLightingSet = 0;
-  helmetPrice = 400;
+  helmetPrice = 4;
   numberOfHelmets = 0;
   numberOfPannenKits = 0;
   pannenKitPrice = 0;
-  backPackSalomonTrailblazerPrice = 300;
+  backPackSalomonTrailblazerPrice = 3;
   numberOfBackPackSalomonTrailblazer = 0;
   totalPrice = 0;
   constructor(private router: ActivatedRoute) { }
@@ -28,12 +28,13 @@ export class BookingPage implements OnInit {
       this.details = JSON.parse(params.bikeDetails);
       console.log(this.details);
     });
+    this.calculate();
   }
 
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  ngDoCheck(){
-    this.calculate();
-  }
+  // ngDoCheck(){
+  //   this.calculate();
+  // }
 
   calculate(){
     // calculate number of days
@@ -48,7 +49,48 @@ export class BookingPage implements OnInit {
       (this.numberOfHelmets * this.helmetPrice) +
       (this.numberOfPannenKits * this.pannenKitPrice) +
       (this.numberOfBackPackSalomonTrailblazer * this.backPackSalomonTrailblazerPrice);
-
   }
 
+  incrementNumberOfBikes(){
+    this.numberOfBikes++;
+    this.calculate();
+  }
+  decrementNumberOfBikes(){
+    this.numberOfBikes = this.numberOfBikes > 1 ? this.numberOfBikes -1 : this.numberOfBikes;
+    this.calculate();
+  }
+
+  incrementNumberOfLightingSet(){
+    this.numberOfLightingSet++;
+    this.calculate();
+  }
+  decrementNumberOfLightingSet(){
+    this.numberOfLightingSet = this.numberOfLightingSet > 0 ? this.numberOfLightingSet -1 : this.numberOfLightingSet;
+    this.calculate();
+  }
+  incrementNumberOfHelmets(){
+    this.numberOfHelmets++;
+    this.calculate();
+  }
+  decrementNumberOfHelmets(){
+    this.numberOfHelmets = this.numberOfHelmets > 0 ? this.numberOfHelmets -1 : this.numberOfHelmets;
+    this.calculate();
+  }
+
+  incrementNumberOfPannenKits(){
+    this.numberOfPannenKits++;
+    // this.calculate();
+  }
+  decrementNumberOfPannenKits(){
+    this.numberOfPannenKits = this.numberOfPannenKits > 0 ? this.numberOfPannenKits -1 : this.numberOfPannenKits;
+  }
+  incrementNumberOfBackPacks(){
+    this.numberOfBackPackSalomonTrailblazer++;
+    this.calculate();
+  }
+  decrementNumberOfBackPacks(){
+    this.numberOfBackPackSalomonTrailblazer =
+    this.numberOfBackPackSalomonTrailblazer > 0 ? this.numberOfBackPackSalomonTrailblazer -1 : this.numberOfBackPackSalomonTrailblazer;
+    this.calculate();
+  }
 }

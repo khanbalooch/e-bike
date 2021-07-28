@@ -24,24 +24,49 @@
     <ion-text slot="end">{{details?.bike.price}}€</ion-text>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked" >Anzahl</ion-label>
-    <ion-input slot="end"  type="number" [(ngModel)]="numberOfBikes" min='1'></ion-input>
+    <ion-label >Anzahl</ion-label>
+    <!-- <ion-input slot="end"  type="number" [(ngModel)]="numberOfBikes" min='1'></ion-input> -->
+    <ion-text class="extras" slot="end">
+      <ion-icon (click)="decrementNumberOfBikes()"  color="danger" name="remove-circle"></ion-icon>
+      <ion-text>{{ '  ' + numberOfBikes + '  '}}</ion-text>
+      <ion-icon (click)="incrementNumberOfBikes()" color ="secondary"name="add-circle"></ion-icon>
+    </ion-text>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked" >Beleuchtungsset {{lightingSetPrice}}</ion-label>
-    <ion-input slot="end"  type="number" [(ngModel)]="numberOfLightingSet" min='0'></ion-input>
+    <ion-label >Beleuchtungsset ({{lightingSetPrice}}€)</ion-label>
+    <ion-text class="extras" slot="end">
+      <ion-icon (click)="decrementNumberOfLightingSet()" color="danger" name="remove-circle"></ion-icon>
+      <ion-text>{{'  ' + numberOfLightingSet + '  ' }}</ion-text>
+      <ion-icon (click)="incrementNumberOfLightingSet()" color ="secondary"name="add-circle"></ion-icon>
+    </ion-text>
+    <!-- <ion-input slot="end"  type="number" [(ngModel)]="numberOfLightingSet" min='0'></ion-input> -->
   </ion-item>
   <ion-item>
-    <ion-label position="stacked" >Fahrradhlem {{helmetPrice}}€</ion-label>
-    <ion-input slot="end" type="number" [(ngModel)]="numberOfHelmets" min='0'></ion-input>
+    <ion-label >Fahrradhelm ({{helmetPrice}}€)</ion-label>
+    <!-- <ion-input slot="end" type="number" [(ngModel)]="numberOfHelmets" min='0'></ion-input> -->
+    <ion-text class="extras" slot="end">
+      <ion-icon (click)="decrementNumberOfHelmets()" color="danger" name="remove-circle"></ion-icon>
+      <ion-text>{{'  ' + numberOfHelmets + '  ' }}</ion-text>
+      <ion-icon (click)="incrementNumberOfHelmets()" color ="secondary"name="add-circle"></ion-icon>
+    </ion-text>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Pannenkit(Kostenlos)</ion-label>
-    <ion-input slot="end"  type="number" [(ngModel)]="numberOfPannenKits" min='0'></ion-input>
+    <ion-label>Pannenkit (Kostenlos)</ion-label>
+    <!-- <ion-input slot="end"  type="number" [(ngModel)]="numberOfPannenKits" min='0'></ion-input> -->
+    <ion-text class="extras" slot="end">
+      <ion-icon (click)="decrementNumberOfPannenKits()" color="danger" name="remove-circle"></ion-icon>
+      <ion-text>{{'  ' + numberOfPannenKits + '  ' }}</ion-text>
+      <ion-icon (click)="incrementNumberOfPannenKits()" color ="secondary"name="add-circle"></ion-icon>
+    </ion-text>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Rucksack Salomon Trailblazer</ion-label>
-    <ion-input slot="end"  type="number" [(ngModel)]="numberOfBackPackSalomonTrailblazer" min='0'></ion-input>
+    <ion-label>Rucksack Salomon Trailblazer</ion-label>
+    <!-- <ion-input slot="end"  type="number" [(ngModel)]="numberOfBackPackSalomonTrailblazer" min='0'></ion-input> -->
+    <ion-text class="extras" slot="end">
+      <ion-icon (click)="decrementNumberOfBackPacks()" color="danger" name="remove-circle"></ion-icon>
+      <ion-text>{{'  ' + numberOfBackPackSalomonTrailblazer + '  ' }}</ion-text>
+      <ion-icon (click)="incrementNumberOfBackPacks()" color ="secondary"name="add-circle"></ion-icon>
+    </ion-text>
   </ion-item>
   <ion-item>
     <ion-label>Gesamtpreis</ion-label>

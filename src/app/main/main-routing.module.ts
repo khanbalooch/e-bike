@@ -7,19 +7,19 @@ const routes: Routes = [
   {
     path: '',
     component: MainPage,
-    // children: [
-    //   {
-    //     path: 'main',
-    //     redirectTo: '/main',
-    //     pathMatch: 'full'
-    //   }
-    // ]
-  },
-  // {
-  //   path: '',
-  //   redirectTo: '/main',
-  //   pathMatch: 'full'
-  // }
+    children: [
+      {
+        path: 'list',
+        loadChildren: () => import('./../list/list.module').then(m => m.ListPageModule)
+      },
+      {
+        path: 'maps',
+        loadChildren: () => import('./../maps/maps.module').then(m => m.MapsPageModule)
+      }
+
+
+    ]
+  }
 ];
 
 @NgModule({

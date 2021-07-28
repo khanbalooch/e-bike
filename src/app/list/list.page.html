@@ -1,0 +1,20 @@
+<ion-content>
+  <ng-template ngFor let-location [ngForOf]="locations">
+    <ion-list>
+      <ion-list-header color="secondary">{{location.name +' ' + location.address}}<ion-icon name="location-sharp"></ion-icon></ion-list-header>
+      <ion-item (click)="gotoDetailsPage(device)" *ngFor="let device of location.devices">
+  
+  
+        <ion-label>
+          <h2>{{device.name}}</h2>
+          <h3>{{device.make + ' ' + device.model}}</h3>
+        </ion-label>
+  
+        <ion-text slot="end">
+          {{device.price}}€
+        </ion-text>
+  
+      </ion-item>
+    </ion-list>  
+  </ng-template>
+</ion-content>

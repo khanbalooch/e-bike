@@ -1,5 +1,7 @@
 {
   "name": "e-bike",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
