@@ -90,7 +90,7 @@ export class PaymentPage implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Vielen Dank',
-      message: 'Vielen Dank für eine Bestätigung. Sie erhalten iene Bestätigung per E-Mail',
+      message: 'Vielen Dank für Ihre Bestellung. Sie erhalten eine Bestätigung per E-Mail.',
       buttons: ['OK'],
     });
 
